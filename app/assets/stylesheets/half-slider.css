@@ -7,6 +7,7 @@
 html,
 body {
     height: 100%;
+    /*padding-top: 35px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
 /* You can change the height of the carousel by changing the height in the class below. It is set to 50% by default, but can be any height! */
@@ -101,4 +102,24 @@ footer {
   #portfolio .portfolio-item {
     margin: 0 0 30px;
   }
+}
+
+
+.thumbnail img {
+    width: 60%;
+}
+
+.ratings {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #d17581;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
 }
