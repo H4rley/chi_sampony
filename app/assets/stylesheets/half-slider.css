@@ -7,7 +7,7 @@
 html,
 body {
     height: 100%;
-    /*padding-top: 35px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    padding-top: 35px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
 /* You can change the height of the carousel by changing the height in the class below. It is set to 50% by default, but can be any height! */
@@ -122,4 +122,7 @@ footer {
 .thumbnail .caption-full {
     padding: 9px;
     color: #333;
+}
+
+.alert-danger, .alert-success {
 }
