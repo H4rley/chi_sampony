@@ -20,4 +20,5 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  :chi_shampoos: Chi Shampoos
+  :choose_your_best_suite: Choose your best suite.
