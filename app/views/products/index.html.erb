@@ -15,21 +15,25 @@
             </div>
         </div>
         <div class="row">
+        <% @products.each do |product| %>
             <div class="col-md-4 col-sm-6 portfolio-item">
-                <a href="products/1" class="portfolio-link" data-toggle="modal">
+                <%#= link_to '',product_path(product), class: "portfolio-link" %>
+                <a href=<%="#{product_path(product)}"%> class="portfolio-link" data-toggle="modal">
                     <div class="portfolio-hover">
                         <div class="portfolio-hover-content">
                             <i class="fa fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img src="assets/chi.jpg" class="img-responsive" alt="">
+                    <%= image_tag product.image, class: "img-responsive" %>
+                    <!-- <img src="assets/chi.jpg" class="img-responsive" alt=""> -->
                 </a>
                 <div class="portfolio-caption">
                     <h4>Round Icons</h4>
                     <p class="text-muted">Graphic Design</p>
                 </div>
             </div>
-        </div>
+        <% end %>
+    </div>
     </div>
 
 </div>
