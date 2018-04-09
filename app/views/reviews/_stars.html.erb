@@ -1,0 +1,7 @@
+<% rating.times do %>
+  <%= render 'reviews/glyphicon-star' %>
+<% end %>
+<% (5 - rating).times do %>
+  <%= render 'reviews/glyphicon-star-empty' %>
+<% end %>
+<%= "#{rating} stars" if show_rating.present? %>

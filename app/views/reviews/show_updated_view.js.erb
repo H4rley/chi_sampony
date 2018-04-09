@@ -1,0 +1,6 @@
+<% if response.status == 200 %>
+  $(".all-reviews").prepend("<%= j render('review', review: @review) %>");
+  reset();
+<% else %>
+  $(".error-messages").prepend("<%= j render('shared/messages', object: @review) %>");
+<% end %>

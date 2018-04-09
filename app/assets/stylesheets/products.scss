@@ -32,3 +32,18 @@ footer {
 #portfolio * {
   z-index: 2;
 }
+
+#review_id {
+  .glyphicon.glyphicon-star,
+  .glyphicon.glyphicon-star-empty{
+    font-size: 1.4em;
+  }
+  #rating_label.form-group {
+    margin-bottom: 5px;
+  }
+  #review-value {
+    position: relative;
+    bottom: 2px;
+    font-size: 16px;
+  }
+}
