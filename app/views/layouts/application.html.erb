@@ -41,6 +41,27 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">    
+                  <li>
+                    <a href="/shopping_card" class="navbar-link", style="padding-right:7px;">
+                      <%= image_tag 'shopping-icon.png', id: 'shopping-icon' %>
+                      <%= image_tag 'shopping-card-circle.png', id: 'shopping-card-circle' %>
+                      <span id="items_count_in_card" style="
+    position: relative;
+    left: -24px;
+    bottom: 7px;
+        font-size: 13px;"
+>
+  <% if @shopping_card.present?  %>
+    <%= @shopping_card.card_items.count %>
+  <% else %>
+    0
+  <% end %>  
+</span>
+                     <span style="position: relative;
+    right: 12px;"><%= I18n.t :shopping_card %></span>
+                    </a>
+                  </li>
+                  
                   <% if user_signed_in? %>
 						        <li> <a href="#"> Logged in as <%= current_user.email %></a> </li>
 						        <li><%= link_to 'Edit profile', edit_user_registration_path%></li> |
@@ -72,7 +93,7 @@
 	    <footer>
 	        <div class="row">
 	            <div class="col-lg-12">
-	                <p>Copyright &copy; Your Website 2014</p>
+	                <p>Copyright &copy; Your Website 2018</p>
 	            </div>
 	        </div>
 	        <!-- /.row -->

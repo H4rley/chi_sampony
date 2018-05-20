@@ -30,7 +30,7 @@ footer {
   margin: 0;
 }
 #portfolio * {
-  z-index: 2;
+//  z-index: 2;
 }
 
 #review_id {
@@ -47,3 +47,40 @@ footer {
     font-size: 16px;
   }
 }
+
+#shopping-card-circle {
+  max-width: 17px;
+    position: relative;
+    left: -8px;
+    bottom: 8px;
+}
+
+#shopping-icon {
+  max-width: 25px;
+}
+
+.addToCardIcon {
+  border-radius: 0;
+  background-color:   #FF017E;
+  border-color:   #FF017E;
+  color: white;
+}
+
+
+.addToCardIcon:hover, .addToCardIcon:focus, .addToCardIcon:active, .addToCardIcon .active, .open>.dropdown-toggle .addToCardIcon {
+  background-color: #BD005E;
+  border-color: #BD005E;
+  color: white;
+  
+}
+
+.popover.fade, .popover-content { 
+  width: 270px;
+   //z-index: 3 !important; 
+
+}
+
+ .popover-title {
+   width: 265px;
+   //z-index: 3 !important; 
+ }

@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180401150928) do
+ActiveRecord::Schema.define(version: 20180425203430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "card_items", force: :cascade do |t|
+    t.bigint "shopping_card_id"
+    t.bigint "product_id"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_card_items_on_product_id"
+    t.index ["shopping_card_id"], name: "index_card_items_on_shopping_card_id"
+  end
 
   create_table "products", force: :cascade do |t|
     t.string "name"
@@ -38,6 +48,11 @@ ActiveRecord::Schema.define(version: 20180401150928) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
+  create_table "shopping_cards", force: :cascade do |t|
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_shopping_cards_on_user_id"
+  end
+
   create_table "users", id: :serial, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -56,5 +71,8 @@ ActiveRecord::Schema.define(version: 20180401150928) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "card_items", "products"
+  add_foreign_key "card_items", "shopping_cards"
   add_foreign_key "reviews", "products"
+  add_foreign_key "shopping_cards", "users"
 end

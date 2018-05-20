@@ -1,6 +1,5 @@
 <!-- Page Content -->
 <div class="container">
-
     <div class="row">
         <div class="col-lg-12">
             <h1><%= I18n.t :chi_shampoos %></h1>
@@ -16,8 +15,7 @@
         </div>
         <div class="row">
         <% @products.each do |product| %>
-            <div class="col-md-4 col-sm-6 portfolio-item">
-                <%#= link_to '',product_path(product), class: "portfolio-link" %>
+            <div class="col-md-3 col-sm-6 portfolio-item">
                 <a href=<%="#{product_path(product)}"%> class="portfolio-link" data-toggle="modal">
                     <div class="portfolio-hover">
                         <div class="portfolio-hover-content">
@@ -25,11 +23,17 @@
                         </div>
                     </div>
                     <%= image_tag product.image, class: "img-responsive" %>
-                    <!-- <img src="assets/chi.jpg" class="img-responsive" alt=""> -->
                 </a>
-                <div class="portfolio-caption">
-                    <h4>Round Icons</h4>
-                    <p class="text-muted">Graphic Design</p>
+                <div class='portfolio-caption'>
+                      <h4><%= product.name.capitalize %></h4>
+                      <div><%= product.price %> €</div>  
+                    <p class="text-muted"><%#= product.description %></p>
+                </div>
+                <div style='text-align: center;'>
+                    <button class='btn addToCardIcon' data-id=<%=product.id%> data-toggle="popover">
+                        <span class="glyphicon glyphicon-shopping-cart"></span>
+                    Add to card
+                </button>
                 </div>
             </div>
         <% end %>
@@ -39,17 +43,44 @@
 </div>
 <!-- /.container -->
 
-<!-- jQuery -->
-<!-- <script src="js/jquery.js"></script> -->
-
-<!-- Bootstrap Core JavaScript -->
-<!-- <script src="js/bootstrap.min.js"></script> -->
-
-<!-- Script to Activate the Carousel -->
 <script>
-$('.carousel').carousel({
-    interval: 5000 //changes the speed
+$(document).ready(function(){
+
+
+$('.addToCardIcon').click(function() {
+    var product = this
+    var id = $(this).data('id')
+    if (!$('.popover').is(':visible'))    
+      $.ajax({
+          url: 'shopping_card',
+          data: {id: id},
+          method: 'POST',
+          success:  function() {
+                add_item_to_card()
+                $('.glyphicon-remove').on('click', function() {                    
+                    $(product).click();
+                })
+            }
+          })
 })
+
+$('[data-toggle="popover"]').popover({
+        title: 'Great!<span class="glyphicon glyphicon-remove" style="padding-left: 183px;"><span>',
+        content: '<p>You successfully added product to your card, you can visit your <a href="/shopping_card">Shopping card</a> or continue shopping.</p>',
+        html: true
+});
+
+
+function add_item_to_card() {
+    var count_element = parseInt($('#items_count_in_card').text())
+    count_element = count_element + 1;
+    $('#items_count_in_card').text(count_element)
+}
+
+
+})
+
+    
 </script>
 
 
