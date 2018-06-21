@@ -55,9 +55,9 @@ class ProductsController < ApplicationController
   end
 
   def filter
-    # byebug
     category = Category.find_by_name params[:category_name]
-    @products = Product.joins(:product_categories).where(category_id: category.id)
+    @products = Product.joins(:product_categories).
+      where('product_categories.category_id = :category_id', category_id: category.id)
     render :index
   end
 
