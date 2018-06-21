@@ -41,6 +41,7 @@
                         <a href="#">Contact</a>
                     </li>
                 </ul>
+                
                 <ul class="nav navbar-nav navbar-right">    
                   <li>
                     <a href="/shopping_card" class="navbar-link", style="padding-right:7px;">
@@ -63,41 +64,27 @@
                     </a>
                   </li>
                   
-                  <%# if user_signed_in? %>
-
                 
-    <li class="dropdown">
-      <a id="drop4" role="button" data-toggle="dropdown" href="#">My Profile <b class="caret"></b></a>
-      <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-        <% if user_signed_in? %>
-        <li role="presentation">
-          <a role="menuitem" tabindex="-1" href=<%=edit_user_registration_path%> >Edit profile</a>
-        </li>
-        <li role="presentation">
-          <a role="menuitem" tabindex="-1" href=<%=destroy_user_session_path%> data-method="delete">Logout</a>
-        </li>
-       <% else %>
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href=<%=new_user_registration_path%> >Sign up</a>
-          </li>
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href=<%=new_user_session_path%> >Login</a>
-          </li>
-       <% end %>
-        <!-- <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li> -->
-      </ul>
-    </li>
-
-
-
-						       <!--  <li> <a href="#"> Logged in as <%#= current_user.email %></a> </li>
-						        <li><%#= link_to 'Edit profile', edit_user_registration_path%></li> |
-						        <li><%#= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %> </li> -->
-				          <%# else %>
-						        <!-- <li><%#= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></li>  -->
-						        <!-- <li><%#= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li> -->
-				          <%# end %>
+                  <li class="dropdown">
+                    <a id="drop4" role="button" data-toggle="dropdown" href="#">My Profile <b class="caret"></b></a>
+                    <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+                      <% if user_signed_in? %>
+                      <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href=<%=edit_user_registration_path%> >Edit profile</a>
+                      </li>
+                      <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href=<%=destroy_user_session_path%> data-method="delete">Logout</a>
+                      </li>
+                     <% else %>
+                        <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href=<%=new_user_registration_path%> >Sign up</a>
+                        </li>
+                        <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href=<%=new_user_session_path%> >Login</a>
+                        </li>
+                     <% end %>        
+                    </ul>
+                  </li>
                 </ul>
 
             </div>
