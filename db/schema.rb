@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180425203430) do
+ActiveRecord::Schema.define(version: 20180618200429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,21 @@ ActiveRecord::Schema.define(version: 20180425203430) do
     t.index ["shopping_card_id"], name: "index_card_items_on_shopping_card_id"
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "product_categories", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_product_categories_on_category_id"
+    t.index ["product_id"], name: "index_product_categories_on_product_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -36,6 +51,8 @@ ActiveRecord::Schema.define(version: 20180425203430) do
     t.integer "image_file_size"
     t.datetime "image_updated_at"
     t.integer "count"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -73,6 +90,9 @@ ActiveRecord::Schema.define(version: 20180425203430) do
 
   add_foreign_key "card_items", "products"
   add_foreign_key "card_items", "shopping_cards"
+  add_foreign_key "product_categories", "categories"
+  add_foreign_key "product_categories", "products"
+  add_foreign_key "products", "categories"
   add_foreign_key "reviews", "products"
   add_foreign_key "shopping_cards", "users"
 end

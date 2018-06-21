@@ -1,31 +1,34 @@
-<p id="notice"><%= notice %></p>
+<div class='container'>
 
-<h1>Products</h1>
+  <p id="notice"><%= notice %></p>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-      <th colspan="3">Name</th>
-      <th colspan="3">Price</th>
-      <th colspan="3">Actions</th> 
-    </tr>
-  </thead>
+  <h1>Products</h1>
 
-  <tbody>
-    <% @products.each do |product| %>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td colspan="3"><%= image_tag product.image(:mini) %></td>
-        <td colspan="3"><%= product.name.capitalize %></td>
-        <td colspan="3"><%= product.price %></td>
-        <td><%= link_to 'Show', product, class: 'btn btn-info' %></td>
-        <td><%= link_to 'Edit', edit_product_path(product), class: 'btn btn-light' %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        <th colspan="3"></th>
+        <th colspan="3">Name</th>
+        <th colspan="3">Price</th>
+        <th colspan="3">Actions</th> 
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td colspan="3"><%= image_tag product.image(:mini) %></td>
+          <td colspan="3"><%= product.name.capitalize %></td>
+          <td colspan="3"><%= product.price %></td>
+          <td><%= link_to 'Show', product, class: 'btn btn-info' %></td>
+          <td><%= link_to 'Edit', edit_product_path(product), class: 'btn btn-light' %></td>
+          <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Product', new_product_path %>
+  <br>
+
+  <%= link_to 'New Product', new_product_path %>
+</div>

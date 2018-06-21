@@ -54,6 +54,13 @@ class ProductsController < ApplicationController
     end
   end
 
+  def filter
+    # byebug
+    category = Category.find_by_name params[:category_name]
+    @products = Product.joins(:product_categories).where(category_id: category.id)
+    render :index
+  end
+
   private
 
     def set_product
@@ -61,6 +68,6 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.fetch(:product, {}).permit(:image, :name, :description, :price)
+      params.fetch(:product, {}).permit(:image, :name, :description, :price, category_ids: [])
     end
 end

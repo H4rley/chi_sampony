@@ -59,9 +59,14 @@ footer {
   max-width: 25px;
 }
 
+.favorite-pink {
+  background-color: #FF017E;
+  color: white !important;
+}
+
 .addToCardIcon {
   border-radius: 0;
-  background-color:   #FF017E;
+  background-color: #FF017E;
   border-color:   #FF017E;
   color: white;
 }
@@ -83,4 +88,8 @@ footer {
  .popover-title {
    width: 265px;
    //z-index: 3 !important; 
+ }
+
+ header#myCarousel {
+     margin-top: -14px;
  }
