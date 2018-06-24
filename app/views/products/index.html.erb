@@ -43,25 +43,43 @@
 
     </header>
 
-    
-<nav class="navbar" role="navigation" style='margin-bottom: 0'>
-        <div class="container">            
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">                    
-                    <% Category.all.each do |category| %>
-                    <li>
-                        <%= link_to category.name + 's', filter_products_path(category_name: category.name)  %>
-                    </li>                   
-                    <% end %>
-                </ul>               
-            </div>
-        </div>
-    </nav>
+<nav id="category-navbar" class="navbar navbar-default" style="margin-bottom: 0;">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Categories</a>
+    </div>
 
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+      <ul class="nav navbar-nav">
+        <% Category.all.each do |category| %>
+            <% active_class = @category && @category.name == category.name ? 'active' : '' %>
+            <li class="<%= active_class %>">
+                <%= link_to category.name + 's', filter_products_path(category_name: category.name), class: 'active'  %>
+            </li>        
+        <% end %>        
+      </ul>
+      <!-- <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form> -->
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav> 
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-12" style="margin-top: 20px;">
+        <div class="col-lg-12" style="margin-top: 15px;">
             <h1>CHI Farouk</h1>
         </div>
     </div>
