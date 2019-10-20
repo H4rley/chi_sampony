@@ -1,0 +1,82 @@
+<div id="address" style="display: none;">
+  <div class="row">
+    <div class="panel panel-default devise-bs col-md-4 col-md-offset-4">
+      <div class="addressErrors"></div>
+      <div class="panel-heading">
+        <h4>Fill in your billing address</h4>
+      </div>
+      <div class="panel-body">
+        <%= f.fields_for :address do |ad| %>
+            <div class="form-group">
+              <%= ad.label :first_name %>
+              <%= ad.text_field :first_name, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= ad.label :last_name %>
+              <%= ad.text_field :last_name, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= ad.label :email %>
+              <%= ad.text_field :email, class: 'form-control', type: 'email' %>
+            </div>
+
+            <div class="form-group">
+              <%= ad.label :telephone_number %>
+              <%= ad.text_field :telephone_number, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= ad.label :country %>
+              <%= ad.text_field :country, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= ad.label :city %>
+              <%= ad.text_field :city, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= ad.label :postal_code %>
+              <%= ad.text_field :postal_code, class: 'form-control' %>
+            </div>
+        <% end %>
+        <%#= f.submit %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm pull-left">
+      <button type="button" class="btn addToCardIcon" onclick="renderTab('payment')">Back</button>
+    </div>
+    <div class="col-sm pull-right">
+      <a class="btn addToCardIcon" onclick="proceedToSummary()">Proceed to Summary</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function proceedToSummary() {
+    var inputs, index;
+    var missingInputs = [];
+    inputs = document.getElementById('address').getElementsByTagName('input');
+    for (index = 0; index < inputs.length; ++index) {
+      if (inputs[index].value == "") {
+        missingInputs.push(inputs[index].id)
+        inputs[index].classList.add('unfilled')
+      }
+      else {
+        inputs[index].classList.remove('unfilled')
+      }
+    }
+
+    if (missingInputs.length == 0) {
+      document.getElementById('order_form').submit()
+      renderTab('summary');
+    }
+    else {
+      document.getElementsByClassName('addressErrors')[0].innerHTML = 'Please fill in missing fields.'
+    }
+  }
+</script>

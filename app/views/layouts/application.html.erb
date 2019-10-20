@@ -57,7 +57,7 @@
         font-size: 13px;"
 >
   <% if @shopping_card.present?  %>
-    <%= @shopping_card.card_items.count %>
+    <%= @shopping_card.card_items.sum(:quantity) %>
   <% else %>
     0
   <% end %>  

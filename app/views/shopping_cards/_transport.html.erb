@@ -1,0 +1,35 @@
+<div id="transport" style="display: none;">
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th class="col-sm-1">Name</th>
+        <th class="col-sm-1">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @transports.each do |tran| %>
+        <tr>
+          <td>
+            <%= f.radio_button :transport_id, tran.id, onClick: "setVisibility('transportBtn')" %>
+            <%= f.label :transport_id, tran.name, value: tran.id %>
+          </td>
+          <td><%= tran.price %> €</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="col-md-1 pull-left">
+    <button type="button" class="btn addToCardIcon"
+            onclick="renderTab('cardItems')">Back</button>
+  </div>
+  <div class="col-md-1 pull-right">
+    <button type="button" class="btn addToCardIcon" id="transportBtn" style="display: none"
+            onclick="renderTab('payment')">Continue</button>
+  </div>
+</div>
+
+<script>
+  function continueInOrder() {
+    document.getElementById('transportBtn').style.display = 'block'
+  }
+</script>

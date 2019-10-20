@@ -1,3 +1,33 @@
 <div class='container'>
-	<h1><%= I18n.t :shopping_card %></h1>
+  <h1><%= I18n.t :shopping_card %></h1>
+
+  <% if @card_items.present? %>
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="active" id="liCardItems">
+          <a href="javascript:void(0);"><span class="glyphicon glyphicon-gift"></span>Products
+            in card</a></li>
+        <li role="presentation" id="liTransport">
+          <a href="javascript:void(0);"><span class="glyphicon glyphicon-plane"></span>Transport</a>
+        </li>
+        <li role="presentation" id="liPayment">
+          <a href="javascript:void(0);"><span class="glyphicon glyphicon-euro"></span>Payment</a>
+        </li>
+        <li role="presentation" id="liAddress">
+          <a href="javascript:void(0);" onclick="renderTab('address');"><span class="glyphicon glyphicon-home"></span>Address</a>
+        </li>
+        <li role="presentation" id="liSummary">
+          <a href="javascript:void(0);" onclick="renderTab('summary');"><span class="glyphicon glyphicon-heart-empty"></span>Summary</a>
+        </li>
+      </ul>
+
+      <%= form_for(@order, url: orders_path, remote: true,
+                   authenticity_token: true, method: 'post',
+                   html: { id: 'order_form' }) do |f| %>
+          <%= render 'card_items', f: f %>
+          <%= render 'transport', f: f %>
+          <%= render 'payment', f: f %>
+          <%= render 'address', f: f %>
+          <%= render 'summary', f: f %>
+      <% end %>
+  <% end %>
 </div>

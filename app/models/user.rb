@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   enum role: [:user, :admin]
+  has_many :orders
+
   after_initialize :set_default_role, :if => :new_record?
 
   def set_default_role

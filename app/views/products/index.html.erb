@@ -105,7 +105,7 @@
                     <p class="text-muted"><%#= product.description %></p>
                 </div>
                 <div style='text-align: center;'>
-                    <button class='btn addToCardIcon' data-id=<%=product.id%> data-toggle="popover">
+                    <button class='btn addToCardIcon addToCardBtn' data-id=<%=product.id%> data-toggle="popover">
                         <span class="glyphicon glyphicon-shopping-cart"></span>
                     Add to card
                 </button>
@@ -122,17 +122,17 @@
 $(document).ready(function(){
 
 
-$('.addToCardIcon').click(function() {
+$('.addToCardBtn').click(function() {
     var product = this
     var id = $(this).data('id')
-    if (!$('.popover').is(':visible'))    
+    if (!$('.popover').is(':visible'))
       $.ajax({
           url: 'shopping_card',
           data: {id: id},
           method: 'POST',
           success:  function() {
                 add_item_to_card()
-                $('.glyphicon-remove').on('click', function() {                    
+                $('.glyphicon-remove').on('click', function() {
                     $(product).click();
                 })
             }

@@ -1,0 +1,27 @@
+<div id="summary" style="display: none;">
+  <table class="table table-hover table-striped">
+    <thead>
+    <tr>
+      <td class="col-sm"></td>
+      <td class="col-sm-11">Name</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><%= f.radio_button :transport, :post_office %></td>
+      <td><%= f.label :transport, 'Post Office', value: :post_office %></td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.radio_button :transport, :courier %></td>
+      <td><%= f.label :transport, 'Courier', value: :courier, require: true %>
+      </td>
+    </tbody>
+  </table>
+  <div class="col-md-1 pull-left">
+    <button type="button" class="btn addToCardIcon" onclick="renderTab('address')">Back</button>
+  </div>
+  <div class="col-md-1 pull-right">
+    <%= f.submit 'Submit', class: "btn addToCardIcon", disabled: true %>
+  </div>
+</div>
