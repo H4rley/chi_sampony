@@ -1,5 +1,6 @@
-class OrdersController < ApplicationController
+# frozen_string_literal: true
 
+class OrdersController < ApplicationController
   def create
     begin
       Order.transaction do
@@ -25,9 +26,8 @@ class OrdersController < ApplicationController
 
     byebug
     respond_to do |format|
-
       format.js { render 'shopping_cards/create' }
-      format.json { render json: 'ok'}
+      format.json { render json: 'ok' }
     end
   end
 
@@ -70,7 +70,7 @@ class OrdersController < ApplicationController
   end
 
   def address_params
-    params.require(:order).require(:address).
-        permit(:first_name, :last_name, :email, :telephone_number, :country, :city, :postal_code)
+    params.require(:order).require(:address)
+          .permit(:first_name, :last_name, :email, :telephone_number, :country, :city, :postal_code)
   end
 end

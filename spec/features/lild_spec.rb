@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-describe "the signin process", type: :feature do
+describe 'the signin process', type: :feature do
   before :each do
     User.create(email: 'user@example.com', password: 'password')
   end
 
-  it "signs me in" do
+  it 'signs me in' do
     Capybara.app_host = 'http://vianoce.lidl.sk'
     visit '/'
     # click_link 'prihlasenie' # 'a.azet-prihlasenie-link'
@@ -14,7 +16,6 @@ describe "the signin process", type: :feature do
     ['E9G8r5AQp'].each_with_index do |co, index|
       fill_in "kod#{index + 1}", with: co
       click_button 'Pridaj'
-
     end
 
     # click_button 'Pokračovať'

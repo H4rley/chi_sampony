@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
@@ -5,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def set_card
     @shopping_card = ShoppingCard.find_by_id session[:shopping_card_id]
-    @shopping_card = ShoppingCard.create unless @shopping_card
+    @shopping_card ||= ShoppingCard.create
     @shopping_card.user_id = current_user&.id
     session[:shopping_card_id] = @shopping_card.id
   end

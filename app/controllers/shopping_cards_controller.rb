@@ -1,7 +1,8 @@
-class ShoppingCardsController < ApplicationController
+# frozen_string_literal: true
 
+class ShoppingCardsController < ApplicationController
   def show
-    @card_items = @shopping_card.card_items#.group_by(:id)
+    @card_items = @shopping_card.card_items # .group_by(:id)
     @order = find_order
     @payments = Payment.all
     @transports = Transport.all

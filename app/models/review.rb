@@ -1,6 +1,8 @@
-class Review < ApplicationRecord
-	belongs_to :user, optional: true
-	belongs_to :product, optional: true
+# frozen_string_literal: true
 
-	validates_presence_of :rating
+class Review < ApplicationRecord
+  belongs_to :user, optional: true
+  belongs_to :product, optional: true
+
+  validates_presence_of :rating
 end
